@@ -1,7 +1,7 @@
 /**
   * Copyright 2018 aTool.org 
   */
-package top.mothership;
+package top.mothership.entity;
 
 /**
  * Auto-generated: 2018-04-15 0:3:31
@@ -11,9 +11,7 @@ package top.mothership;
  */
 @lombok.Data
 public class Data {
-
     private String status;
     private int change;
     private Rtmp rtmp;
-
 }
