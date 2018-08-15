@@ -6,6 +6,7 @@ import okhttp3.*;
 import top.mothership.entity.BiliBiliResponse;
 import top.mothership.entity.Data;
 import top.mothership.entity.OBSSetting;
+import top.mothership.entity.Settings;
 
 import java.io.*;
 import java.time.Instant;
@@ -88,9 +89,8 @@ public class Main {
                 ) {
                     obsSetting = new GsonBuilder().create().fromJson(br, OBSSetting.class);
                     if (obsSetting == null || obsSetting.getSettings() == null) {
-                        System.err.println(Instant.now() + " 读取直播码配置文件时，出现Gson反序列化异常，程序即将退出；");
-                        TimeUnit.SECONDS.sleep(10);
-                        return;
+                        obsSetting = new OBSSetting();
+                        obsSetting.setSettings(new Settings());
                     }
                 } catch (IOException e) {
                     System.err.println(Instant.now() + " 读取直播码配置文件时发生IO异常：" + e.getMessage() + "，程序即将退出；");
