@@ -131,10 +131,10 @@ public class Main {
                         //返回码是0的时候，Data是对象（其他情况是数组，直接按对象反序列化会出异常），因此重新反序列化一次
                         BiliBiliResponse<Data> biliBiliResponse2 =
                                 new GsonBuilder().create().fromJson(responseBody, new TypeToken<BiliBiliResponse<Data>>(){}.getType());
-                        if (obsSetting.getSettings().getKey()
-                                .equals( biliBiliResponse2.getData().getRtmp().getCode())
-                                && obsSetting.getSettings().getServer()
-                                .equals(biliBiliResponse2.getData().getRtmp().getAddr())) {
+                        if (biliBiliResponse2.getData().getRtmp().getCode()
+                                .equals(obsSetting.getSettings().getKey() )
+                                && biliBiliResponse2.getData().getRtmp().getAddr()
+                                .equals(obsSetting.getSettings().getServer())) {
 
                             System.out.println(Instant.now() + " 直播地址、直播码校验通过，无需修改，程序即将退出！");
                         } else {
